@@ -1,0 +1,17 @@
+{
+  "name": "chromeHistoryFuzz",
+  "authors": [
+    "Moshe Zada <moshe@forter.com>"
+  ],
+  "description": "",
+  "main": "main.js",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
