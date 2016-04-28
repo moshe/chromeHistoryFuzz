@@ -1,45 +1,85 @@
+ /*jshint esversion: 6 */
 window.addEventListener('load', function() {
+    Array.prototype.sortBy = function(p) {
+        return this.slice(0).sort(function(a,b) {
+            return (a[p] < b[p]) ? 1 : (a[p] > b[p]) ? -1 : 0;
+        });
+    };
+
+    var sigmoid = function(x, degree) {
+        return 1/(1 + Math.pow(Math.E, -degree * x));
+    };
+
     chrome.history.search({
         text: '',
-        maxResults: 1000
+        maxResults: 99000,
+        startTime: 0
     }, function(historyItems) {
-
-    var content = historyItems.map(function(item) {
-             return {title: item.title, url: item.url};
-         }).filter(function(x) { return !!x;});
-
-        $.fn.search.settings.templates = {
-            escape: function(string) {
-                // returns escaped string for injected results
-            },
-            message: function(message, type) {
-                // returns html for message with given message and type
-            },
-            category: function(response) {
-                // returns results html for category results
-            },
-            standard: function(response) {
-                // returns results html for standard results
+        var content = historyItems.map(function(item) {
+                 return {title: item.title, url: item.url};
+             }).filter(function(x) { return !!x;});
+        $.fn.search.settings.templates.standard = function(response) {
                 return response.results.map(function(result) {
-                    return '<a class="result" href="' +
-                        result.url +
-                        '"><div class="content"><div class="title">' +
-                        result.title +
-                        '</div><div class="urlResult" style="color:#989898;">' +
-                        result.url +
-                        '</div></div></a>';
+                    var score = Math.floor(result.totalScore * 100);
+                    var color = 'red';
+                    if (score > 70) color = 'green';
+                    else if (score > 60) color = 'olive';
+                    else if (score > 50) color = 'yellow';
+                    else if (score > 40) color = 'orange';
+                    return `<a class="result" href="' + result.url + '">
+                    <div class="ui grid">
+                        <div class="fourteen wide column">
+                            <div class="ui feed">
+                                <div class="event">
+                                    <div class="content">
+                                        <div class="summary">
+                                            <div class="label inline">
+                                                <img style="height: 16px" src="chrome://favicon/${result.url}">
+                                            </div>
+                                            <div class="title inline">
+                                                ${result.title}
+                                            </div>
+                                            <div class="date inline">
+                                                ${moment(result.lastVisitTime).fromNow()}
+                                            </div>
+                                            <div class="extra text url">
+                                                ${result.url.replace(/%20/g, " ")}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="center aligned two wide column">
+                            <div class="ui big ${color} circular label">${score}%</div>
+                        </div>
+                    </div>
+               </a>`;
                 });
-            }
-        };
+            };
 
         $('.ui.search')
             .search({
-                source: content,
+                source: historyItems,
                 searchFields: [
                     'title',
                     'url'
                 ],
                 searchFullText: true,
+                overrideSearch: function(searchTerm, source, searchFields) {
+                    var options = {
+                        pre: '',
+                        post: '',
+                        extract: function(el) { return el.title + '|||' + el.url;}
+                    };
+                    var results = fuzzy.filter(searchTerm, source, options).map(function(x) {
+                        x.original.originalScore = x.score;
+                        x.original.totalScore = sigmoid(x.score, 0.05) * sigmoid(x.original.visitCount, 0.08) * sigmoid(x.original.typedCount, 0.1);
+                        x.original.title = x.string.split('|||')[0];
+                        return x.original;
+                    });
+                    return results.sortBy('totalScore');
+                },
                 onSelect: function(result){
                     chrome.tabs.create({
                         selected: true,

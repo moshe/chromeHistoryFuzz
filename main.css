@@ -5,3 +5,25 @@ body {
 .urlResult {
     font: #ffffff;
 }
+
+.ui.feed>.event>.content .extra {
+    margin: 0;
+}
+
+.ui.feed>.event>.content .extra.text {
+    max-width: none;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.title {
+    font-size: 16px;
+}
+
+.url {
+     color: #ABB6AE!important;
+     font-weight: normal!important;
+     font-style: italic!important;
+}
