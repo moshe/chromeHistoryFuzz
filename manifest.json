@@ -4,7 +4,9 @@
     "manifest_version": 2,
     "description": "Fuzzy search across all you history",
     "permissions": [
-        "history"
+        "history",
+        "storage",
+        "chrome://favicon/"
     ],
     "background": {
         "scripts": ["background.js"]
@@ -12,8 +14,8 @@
     "commands": {
         "_execute_browser_action": {
             "suggested_key": {
-                "default": "Alt+A",
-                "mac": "Alt+A"
+                "default": "Alt+L",
+                "mac": "Alt+L"
             }
         }
     },
