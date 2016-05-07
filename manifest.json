@@ -1,26 +1,27 @@
 {
-    "name": "chromeHistoryFuzz",
-    "version": "0.1",
-    "manifest_version": 2,
-    "description": "Fuzzy search across all you history",
-    "permissions": [
-        "history",
-        "storage",
-        "chrome://favicon/"
-    ],
-    "background": {
-        "scripts": ["background.js"]
-    },
-    "commands": {
-        "_execute_browser_action": {
-            "suggested_key": {
-                "default": "Alt+L",
-                "mac": "Alt+L"
-            }
-        }
-    },
-    "browser_action": {
-        "default_popup": "main.html",
-        "default_icon": "clock.png"
+  "name": "chromeHistoryFuzz",
+  "version": "0.1",
+  "manifest_version": 2,
+  "description": "Fuzzy search across all you history",
+  "options_page": "options.html",
+  "permissions": [
+    "history",
+    "storage",
+    "chrome://favicon/"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Alt+L",
+        "mac": "Alt+L"
+      }
     }
+  },
+  "browser_action": {
+    "default_popup": "main.html",
+    "default_icon": "URL_History-64.png"
+  }
 }

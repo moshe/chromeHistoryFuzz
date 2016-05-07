@@ -1,17 +1,20 @@
 {
   "name": "chromeHistoryFuzz",
   "authors": [
-    "Moshe Zada <moshe@forter.com>"
+  "Moshe Zada <zada.moshe@gmail.com>"
   ],
   "description": "",
   "main": "main.js",
   "moduleType": [],
   "homepage": "",
   "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ]
+  "**/.*",
+  "node_modules",
+  "bower_components",
+  "test",
+  "tests"
+  ],
+  "dependencies": {
+  "keymaster": "^1.6.3"
+  }
 }

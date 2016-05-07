@@ -1,29 +1,41 @@
 body {
-    height: 100%;
-    width: 800px;
+  height: 100%;
+  width: 800px;
 }
 .urlResult {
-    font: #ffffff;
+  font: #ffffff;
 }
 
 .ui.feed>.event>.content .extra {
-    margin: 0;
+  margin: 0;
 }
 
 .ui.feed>.event>.content .extra.text {
-    max-width: none;
+  max-width: none;
 }
 
 .inline {
-    display: inline-block;
+  display: inline-block;
 }
 
 .title {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .url {
-     color: #ABB6AE!important;
-     font-weight: normal!important;
-     font-style: italic!important;
+   color: #ABB6AE!important;
+   font-weight: normal!important;
+   font-style: italic!important;
+}
+
+.ui.search .prompt {
+  border-radius: 0px;
+  border-width: 0px;
+}
+
+.truncate {
+  width: 550px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
