@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <script src='bower_components/jquery/dist/jquery.min.js'></script>
+    <link rel="stylesheet" href="bower_components/semantic/dist/semantic.min.css" />
+    <script src="bower_components/semantic/dist/semantic.js"></script>
+    <script src="options.js"></script>
+</head>
+
+<body>
+    <h1 class="ui center aligned header">Settings</h1>
+    <div class="ui form fluid">
+        <div class="ui grid">
+            <div class="column"></div>
+            <div class="column">
+                <div class="inline field">
+                    <div class="ui checkbox toggle" id='debug'  >
+                        <input type="checkbox">
+                        <label>Debug mode</label>
+                    </div>
+                </div>
+                <div class="inline field">
+                    <div class="ui checkbox disabled toggle" id="invert">
+                        <input type="checkbox">
+                        <label>Invert colors</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .last.container {
+            margin-bottom: 300px !important;
+        }
+
+        h1.ui.center.header {
+            margin-top: 1em;
+        }
+
+        h2.ui.center.header {
+            margin: 4em 0em 2em;
+        }
+
+        h3.ui.center.header {
+            margin-top: 1em;
+            padding: 2em 0em;
+        }
+    </style>
+</body>
+
+</html>
