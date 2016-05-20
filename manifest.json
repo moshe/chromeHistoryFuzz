@@ -23,6 +23,6 @@
   },
   "browser_action": {
     "default_popup": "main.html",
-    "default_icon": "URL_History-64.png"
+    "default_icon": "H4.png"
   }
 }

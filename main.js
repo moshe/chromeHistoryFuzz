@@ -30,7 +30,7 @@ window.addEventListener('load', function() {
             $(`#result-${num}`).click();
           });
           var score = Math.floor(result.totalScore * 100);
-          var debugScores = debug? `visitScore: ${Math.floor(result.visitScore * 100)} | termScore: ${Math.floor(result.termScore * 100)}`: '';
+          var debugScores = debug? `visitScore: ${Math.floor(result.visitScore * 100)} | visitCount: ${result.visitCount} | termScore: ${Math.floor(result.termScore * 100)}`: '';
           var active = num === 1? 'active': '';
           var color = 'red';
           if (score > 70) color = 'green';
