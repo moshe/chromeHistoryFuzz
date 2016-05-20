@@ -15,8 +15,9 @@
   "commands": {
     "_execute_browser_action": {
       "suggested_key": {
-        "default": "Alt+L",
-        "mac": "Alt+L"
+        "windows": "Ctrl+K",
+        "mac": "Command+K",
+        "linux": "Ctrl+K"
       }
     }
   },
