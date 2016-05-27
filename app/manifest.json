@@ -3,14 +3,14 @@
   "version": "0.0.2",
   "manifest_version": 2,
   "description": "Fuzzy search across all you history",
-  "options_page": "options.html",
+  "options_page": "html/options.html",
   "permissions": [
     "history",
     "storage",
     "chrome://favicon/"
   ],
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["js/background.js"]
   },
   "commands": {
     "_execute_browser_action": {
@@ -22,7 +22,7 @@
     }
   },
   "browser_action": {
-    "default_popup": "main.html",
-    "default_icon": "H4.png"
+    "default_popup": "html/index.html",
+    "default_icon": "images/H4.png"
   }
 }
