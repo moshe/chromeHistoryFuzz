@@ -76,9 +76,12 @@ window.addEventListener('load', function() {
         ],
         searchFullText: true,
         overrideSearch: function(searchTerm, source, searchFields) {
-          var results = fuzzaldrin.filter(source, searchTerm, {key:'url', maxResults:700}).map(function(x) {
+          source.map(function(x) {
+            x.searchField = x.url;
+          });
+          var results = fuzzaldrin.filter(source, searchTerm, {key:'searchField', maxResults:700}).map(function(x) {
             x.visitScore = sigmoid(x.visitCount, 0.08);
-            x.termScore = sigmoid(fuzzaldrin.score(x.url, searchTerm), 0.0001);
+            x.termScore = sigmoid(fuzzaldrin.score(x.searchField, searchTerm), 0.0001);
             x.totalScore = x.termScore * x.visitScore;
             return x;
           });

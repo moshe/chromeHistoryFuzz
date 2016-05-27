@@ -1,6 +1,6 @@
 {
   "name": "chromeHistoryFuzz",
-  "version": "0.1",
+  "version": "0.0.2",
   "manifest_version": 2,
   "description": "Fuzzy search across all you history",
   "options_page": "options.html",
@@ -17,7 +17,7 @@
       "suggested_key": {
         "windows": "Ctrl+K",
         "mac": "Command+K",
-        "linux": "Ctrl+K"
+        "default": "Ctrl+K"
       }
     }
   },
