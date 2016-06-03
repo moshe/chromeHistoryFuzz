@@ -1,5 +1,5 @@
 {
-  "name": "chromeHistoryFuzz",
+  "name": "Chrome History Fuzzy Search",
   "version": "0.0.2",
   "manifest_version": 2,
   "description": "Fuzzy search across all you history",
